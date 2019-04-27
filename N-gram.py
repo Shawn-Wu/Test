@@ -21,13 +21,19 @@ for i in range(len_misspell):
     print(misspell_data[i])
     output = ""
     value_list = []
-    for j in range(len_dict):
-        ngram_value = ngram.NGram.compare(misspell_data[i], dict_data[j], N=3)
-        value_list.append(ngram_value)
-    max_value = max(value_list)
-    for k in range(len(value_list)):
-        if value_list[k] == max_value:
-            output = dict_data[k] + " "
+    flag = False
+    for x in range(len_dict):
+        if misspell_data[i] == dict_data[x]:
+            output = output + misspell_data[i]
+            flag = True
+    if flag == False:
+        for j in range(len_dict):
+            ngram_value = ngram.NGram.compare(misspell_data[i], dict_data[j], N=3)
+            value_list.append(ngram_value)
+        max_value = max(value_list)
+        for k in range(len(value_list)):
+            if value_list[k] == max_value:
+                output = dict_data[k] + " "
     output = output + "\n"
     print(output)
     f.writelines(output)
