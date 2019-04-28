@@ -18,7 +18,6 @@ len_misspell = len(misspell_data)
 len_dict = len(dict_data)
 for i in range(len_misspell):
     print((i / len_misspell) * 100)
-    print(misspell_data[i])
     output = ""
     value_list = []
     flag = False
@@ -33,8 +32,7 @@ for i in range(len_misspell):
         max_value = max(value_list)
         for k in range(len(value_list)):
             if value_list[k] == max_value:
-                output = dict_data[k] + " "
+                output = output + dict_data[k] + " "
     output = output + "\n"
-    print(output)
     f.writelines(output)
 f.close()
